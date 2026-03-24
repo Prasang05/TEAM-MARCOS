@@ -1,0 +1,32 @@
+location,lat,lng,time,violation_type,vehicle_type
+Sitabuldi,21.1458,79.0882,18:00,helmet,bike
+Sitabuldi,21.1458,79.0882,19:00,helmet,bike
+Sitabuldi,21.1458,79.0882,20:00,signal_jump,car
+Sitabuldi,21.1458,79.0882,21:00,no_seatbelt,car
+Sitabuldi,21.1458,79.0882,19:30,helmet,bike
+Dharampeth,21.1340,79.0600,17:00,helmet,bike
+Dharampeth,21.1340,79.0600,18:30,signal_jump,car
+Dharampeth,21.1340,79.0600,20:00,helmet,bike
+Dharampeth,21.1340,79.0600,21:30,no_seatbelt,car
+Wardha Road,21.1100,79.0500,21:00,overloading,truck
+Wardha Road,21.1100,79.0500,22:00,overloading,truck
+Wardha Road,21.1100,79.0500,23:00,signal_jump,car
+Wardha Road,21.1100,79.0500,22:30,overloading,truck
+Sadar,21.1600,79.0800,16:00,helmet,bike
+Sadar,21.1600,79.0800,17:30,helmet,bike
+Sadar,21.1600,79.0800,18:00,signal_jump,car
+Sadar,21.1600,79.0800,19:00,no_seatbelt,car
+Manish Nagar,21.0900,79.0700,20:00,signal_jump,car
+Manish Nagar,21.0900,79.0700,21:00,helmet,bike
+Manish Nagar,21.0900,79.0700,22:00,overloading,truck
+Manish Nagar,21.0900,79.0700,23:30,overloading,truck
+Sitabuldi,21.1458,79.0882,20:30,helmet,bike
+Sitabuldi,21.1458,79.0882,21:30,signal_jump,car
+Dharampeth,21.1340,79.0600,19:00,helmet,bike
+Dharampeth,21.1340,79.0600,20:30,signal_jump,car
+Wardha Road,21.1100,79.0500,21:30,overloading,truck
+Wardha Road,21.1100,79.0500,23:30,overloading,truck
+Sadar,21.1600,79.0800,18:30,helmet,bike
+Sadar,21.1600,79.0800,19:30,signal_jump,car
+Manish Nagar,21.0900,79.0700,21:30,no_seatbelt,car
+Manish Nagar,21.0900,79.0700,22:30,overloading,truck

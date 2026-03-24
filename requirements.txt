@@ -1,0 +1,9 @@
+streamlit
+pandas
+numpy
+folium
+streamlit-folium
+plotly
+scikit-learn
+python-dotenv
+google-generativeai

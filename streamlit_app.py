@@ -169,13 +169,26 @@ st.divider()
 # --- 6. AI COPILOT CHATBOT (GEMINI INTEGRATED) ---
 st.markdown("## 💬 AI Naka Copilot (Powered by Gemini)")
 
+# Suggested Questions Row
+st.markdown("<p style='font-size:14px; color:#64748b; margin-bottom: 5px;'>Quick Queries:</p>", unsafe_allow_html=True)
+sq_cols = st.columns(4)
+btn_prompt = None
+if sq_cols[0].button("📍 Most Active Zone?", use_container_width=True): btn_prompt = "Which area has the most traffic violations in the current data?"
+if sq_cols[1].button("⏰ Peak Time?", use_container_width=True): btn_prompt = "What is the peak timeframe for violations and why?"
+if sq_cols[2].button("🚗 Major Offender?", use_container_width=True): btn_prompt = "Which vehicle type is committing the most offenses right now?"
+if sq_cols[3].button("🔥 Hotspot Analysis", use_container_width=True): btn_prompt = "Give me a detailed breakdown of the top 3 hotspots and suggested action for each."
+
 # Display previous chats
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+# Combine Chat Input and Button Prompt
+user_input = st.chat_input("Ask Gemini complex questions about this active traffic data...")
+prompt = user_input if user_input else btn_prompt
+
 # Process New Chat
-if prompt := st.chat_input("Ask Gemini complex questions about this active traffic data..."):
+if prompt:
     # Add user message to state
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
@@ -191,26 +204,22 @@ if prompt := st.chat_input("Ask Gemini complex questions about this active traff
                     # Provide dynamic DataFrame context to the LLM
                     loc_counts = filtered_df['location'].value_counts()
                     top_locs = loc_counts.to_dict() if not loc_counts.empty else "No locations"
-                    
                     veh_counts = filtered_df['vehicle'].value_counts()
                     top_vehs = veh_counts.to_dict() if not veh_counts.empty else "No vehicles"
-                    
                     vio_counts = filtered_df['violation'].value_counts()
                     top_vios = vio_counts.to_dict() if not vio_counts.empty else "No violations"
                     
                     sys_instruction = f"""
                     You are NakaCopilot, an elite AI traffic enforcement assistant integrated directly into an active dashboard.
-                    
                     Here are the LIVE STATS of the user's actively filtered dashboard right now:
                     - Total Tracked Violations: {len(filtered_df)}
                     - Counts by Zone: {top_locs}
                     - Counts by Vehicle Class: {top_vehs}
                     - Counts by Offense Type: {top_vios}
-                    
-                    Review this explicitly provided data to answer the user's question accurately. Be conversational, insightful, and highly professional like a data scientist.
+                    Answer accurately based on this data. Be conversational but precise.
                     """
                     
-                    model = genai.GenerativeModel("gemini-pro")
+                    model = genai.GenerativeModel("models/gemini-2.0-flash")
                     resp = model.generate_content(f"SYSTEM INSTRUCTION: {sys_instruction}\n\nUSER PROMPT: {prompt}")
                     res_text = resp.text
                     
